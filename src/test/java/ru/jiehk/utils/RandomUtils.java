@@ -3,7 +3,6 @@ package ru.jiehk.utils;
 import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
@@ -11,20 +10,14 @@ public class RandomUtils {
             "September", "October", "November", "December");
 
     public static String getRandomGender() {
-        Random rand = new Random();
         List<String> gendersList = Arrays.asList("Male", "Female", "Other");
-        String randomElement = null;
-        int randomIndex = rand.nextInt(gendersList.size());
-        randomElement = gendersList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(gendersList.size());
+        return gendersList.get(randomIndex);
     }
 
     public static String getRandomMonth() {
-        Random rand = new Random();
-        String randomElement = null;
-        int randomIndex = rand.nextInt(monthsList.size());
-        randomElement = monthsList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(monthsList.size());
+        return monthsList.get(randomIndex);
     }
 
     public static String getRandomDay(String year, String month) {
@@ -34,36 +27,25 @@ public class RandomUtils {
     }
 
     public static String getRandomHobby() {
-        Random rand = new Random();
         List<String> hobbiesList = Arrays.asList("Sports", "Reading", "Music");
-        String randomElement = null;
-        int randomIndex = rand.nextInt(hobbiesList.size());
-        randomElement = hobbiesList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(hobbiesList.size());
+        return hobbiesList.get(randomIndex);
     }
 
     public static String getRandomSubject() {
-        Random rand = new Random();
         List<String> subjectsList = Arrays.asList("Maths", "Chemistry", "Computer Science", "Commerce", "Economics",
                 "Accounting", "Arts", "Social Studies", "History", "Civics", "Physics", "English");
-        String randomElement = null;
-        int randomIndex = rand.nextInt(subjectsList.size());
-        randomElement = subjectsList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(subjectsList.size());
+        return subjectsList.get(randomIndex);
     }
 
     public static String getRandomState() {
-        Random rand = new Random();
         List<String> statesList = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-        String randomElement = null;
-        int randomIndex = rand.nextInt(statesList.size());
-        randomElement = statesList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(statesList.size());
+        return statesList.get(randomIndex);
     }
 
     public static String getRandomCity(String value) {
-        Random rand = new Random();
-        String randomElement;
         List<String> citiesList = null;
         switch (value) {
             case "NCR":
@@ -79,8 +61,7 @@ public class RandomUtils {
                 citiesList = Arrays.asList("Jaipur", "Jaiselmer");
                 break;
         }
-        int randomIndex = rand.nextInt(citiesList.size());
-        randomElement = citiesList.get(randomIndex);
-        return randomElement;
+        int randomIndex = ThreadLocalRandom.current().nextInt(citiesList.size());
+        return citiesList.get(randomIndex);
     }
 }
