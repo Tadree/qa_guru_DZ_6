@@ -7,84 +7,80 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
+    static List<String> monthsList = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August",
+            "September", "October", "November", "December");
+
     public static String getRandomGender() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("Male", "Female", "Other");
+        List<String> gendersList = Arrays.asList("Male", "Female", "Other");
         String randomElement = null;
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(gendersList.size());
+        randomElement = gendersList.get(randomIndex);
         return randomElement;
     }
 
     public static String getRandomMonth() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August",
-                "September", "October", "November", "December");
         String randomElement = null;
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(monthsList.size());
+        randomElement = monthsList.get(randomIndex);
         return randomElement;
     }
 
     public static String getRandomDay(String year, String month) {
-        String[] monthList = new String[]{"January", "February", "March", "April", "May", "June", "July", "August",
-                "September", "October", "November", "December"};
-        int mounthIndex = Arrays.asList(monthList).indexOf(month);
-        YearMonth yearMonthObject = YearMonth.of(Integer.parseInt(year), mounthIndex + 1);
-        int maxDay = yearMonthObject.lengthOfMonth();
-        Random r = new Random();
-        int newDay = ThreadLocalRandom.current().nextInt(1, maxDay + 1);
+        YearMonth yearMonthObject = YearMonth.of(Integer.parseInt(year), monthsList.indexOf(month) + 1);
+        int newDay = ThreadLocalRandom.current().nextInt(1, yearMonthObject.lengthOfMonth() + 1);
         return String.format("%02d", newDay);
     }
 
     public static String getRandomHobby() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("Sports", "Reading", "Music");
+        List<String> hobbiesList = Arrays.asList("Sports", "Reading", "Music");
         String randomElement = null;
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(hobbiesList.size());
+        randomElement = hobbiesList.get(randomIndex);
         return randomElement;
     }
 
     public static String getRandomSubject() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("Maths", "Chemistry", "Computer Science", "Commerce", "Economics",
+        List<String> subjectsList = Arrays.asList("Maths", "Chemistry", "Computer Science", "Commerce", "Economics",
                 "Accounting", "Arts", "Social Studies", "History", "Civics", "Physics", "English");
         String randomElement = null;
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(subjectsList.size());
+        randomElement = subjectsList.get(randomIndex);
         return randomElement;
     }
 
     public static String getRandomState() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+        List<String> statesList = Arrays.asList("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
         String randomElement = null;
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(statesList.size());
+        randomElement = statesList.get(randomIndex);
         return randomElement;
     }
 
     public static String getRandomCity(String value) {
         Random rand = new Random();
         String randomElement;
-        List<String> givenList = null;
+        List<String> citiesList = null;
         switch (value) {
             case "NCR":
-                givenList = Arrays.asList("Delhi", "Gurgaon", "Noida");
+                citiesList = Arrays.asList("Delhi", "Gurgaon", "Noida");
                 break;
             case "Uttar Pradesh":
-                givenList = Arrays.asList("Agra", "Lucknow", "Merrut");
+                citiesList = Arrays.asList("Agra", "Lucknow", "Merrut");
                 break;
             case "Haryana":
-                givenList = Arrays.asList("Karnal", "Panipat");
+                citiesList = Arrays.asList("Karnal", "Panipat");
                 break;
             case "Rajasthan":
-                givenList = Arrays.asList("Jaipur", "Jaiselmer");
+                citiesList = Arrays.asList("Jaipur", "Jaiselmer");
                 break;
         }
-        int randomIndex = rand.nextInt(givenList.size());
-        randomElement = givenList.get(randomIndex);
+        int randomIndex = rand.nextInt(citiesList.size());
+        randomElement = citiesList.get(randomIndex);
         return randomElement;
     }
 }
